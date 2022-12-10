@@ -5,7 +5,7 @@ const configuration = new Configuration({
 })
 const openai = new OpenAIApi(configuration)
 
-const generaterImage = async (req, res) => {
+const generateImage = async (req, res) => {
     const { prompt, size } = req.body;
 
     const imageSize = size == 'small' ? '256x256' : size == 'medium' ? '512x512' : '1024x1024';
@@ -14,7 +14,7 @@ const generaterImage = async (req, res) => {
         const response = await openai.createImage({
             prompt,
             n: 1,
-            imageSize
+            size: imageSize,
         });
         const imageUrl = response.data.data[0].url;
         res.status(200).json({
@@ -35,4 +35,4 @@ const generaterImage = async (req, res) => {
     }
 }
 
-module.exports = { generaterImage };
+module.exports = { generateImage };
