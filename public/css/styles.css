@@ -49,6 +49,10 @@ body {
 	color: var(--primary-color);
 }
 
+h2 {
+	font-weight: 500;
+}
+
 /* Showcase */
 .showcase {
 	height: 350px;
